@@ -1,0 +1,27 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 192px 880px 144px 2048px;
+  h2 {
+    text-align: center;
+  }
+}
+
+.headerclass {
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.centralstage {
+  display: flex;
+  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}

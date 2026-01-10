@@ -1,0 +1,5 @@
+.gall_list {
+  display: flex;
+  border: 2px solid goldenrod;
+  flex-wrap: wrap;
+}
