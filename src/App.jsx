@@ -1,7 +1,7 @@
 // ! MY BROTHER IN CHRISTIANO RONALDO PLEASE DO NOT PUT ALL OF YOUR CODE IN APP.JSX INSTEAD OF COMPONENTS!
 // ! COMPONENTS ARE THERE FOR SOME LOVING!
 
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import "./App.css";
@@ -18,6 +18,7 @@ import CentralStage from "./components/CentralStage";
 function App() {
   const [imageData, setImageData] = useState([]);
   const [focusData, setFocusData] = useState([]);
+  let focusedImageId = useRef(null); // useRef was imported from react to track persistant value accross renders
 
   useEffect(() => {
     async function fetchUnspImages() {
@@ -25,10 +26,22 @@ function App() {
         "https://api.unsplash.com/photos/?client_id=6M6VjoLzlszphQ-pCxDD7Zx887-YhLGpo9qZCn3aus0&per_page=16"
       );
       const unspshImgData = await unspshImgsResponse.json();
+      // On first load, this variable will be null (meaning it wasn't set yet) so then > we set the .current to be the unspshImgData (first entry's id)
+      // .current is how we access that persisting variable (using useRef)
+      if (focusedImageId.current == null) {
+        focusedImageId.current = unspshImgData[0].id;
+      }
       console.log(unspshImgData);
-      // console.log(unspshFocusData);
+      console.log(focusedImageId.current);
+      // We want to match the single image (by its array id) from the API with the one tracked in focusedImgId
+      let focusedImgData = unspshImgData.filter(function (item) {
+        if (item.id == focusedImageId.current) {
+          return item;
+        }
+      });
+      console.log(focusedImgData);
       setImageData(unspshImgData);
-      setFocusData(unspshImgData);
+      setFocusData(focusedImgData);
     }
     fetchUnspImages();
   }, []);

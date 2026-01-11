@@ -1,8 +1,10 @@
-// import { useState } from "react";
+// import { useEffect } from "react";
 import "./GalleryItem.css";
 
-export default function GalleryItem({ src, desc, author, date }) {
-  // const [selectItem, ]
+export default function GalleryItem({ galleryId, src, desc, date }) {
+  // useEffect(() => {galleryClick({galleryId}) {
+
+  // }});
   return (
     <>
       <figure className="gall_fig">
@@ -10,7 +12,6 @@ export default function GalleryItem({ src, desc, author, date }) {
           <img className="gall_img" src={src} />
         </div>
         <p>Description: {desc}</p>
-        <p>By: {author}</p>
         <p>Created: {date}</p>
       </figure>
     </>

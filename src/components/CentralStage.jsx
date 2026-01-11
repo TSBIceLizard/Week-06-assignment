@@ -14,7 +14,7 @@ export default function CentralStage({ placeHolderImg }) {
               <FocusedImg
                 key={singlePlaceHolderImg.id}
                 srcfull={singlePlaceHolderImg.urls.regular}
-                dec={singlePlaceHolderImg.alt_description}
+                desc={singlePlaceHolderImg.alt_description}
                 date={singlePlaceHolderImg.created_at}
               />
             );
